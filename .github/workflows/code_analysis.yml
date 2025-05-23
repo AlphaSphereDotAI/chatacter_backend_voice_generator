@@ -1,14 +1,9 @@
 name: Trunk Code Quality
 on:
   push:
+    branches: main
   pull_request:
-  workflow_dispatch:
-permissions:
-  checks: write
-  contents: read
-concurrency:
-  group: ${{ github.head_ref || github.run_id }}
-  cancel-in-progress: true
+    branches: main
 jobs:
   trunk:
     name: Trunk Code Quality
@@ -19,5 +14,4 @@ jobs:
       - name: Trunk Code Quality
         uses: trunk-io/trunk-action@v1
         with:
-          post-annotations: true
-          arguments: --github-annotate-new-only=false
+          post-annotations: true 
